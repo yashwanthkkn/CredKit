@@ -18,7 +18,9 @@
 npm install -g credkit
 ```
 
-NOTE : Ensure you run *az login* before proceeding to use the application since it is dependent on that.
+Requirements
+* Ensure you run *az login* before proceeding to use the application since it is dependent on that.
+* Use *node 18 or above*
 
 ## Add New Token config
 Developers can add new token configuration using the following comment.

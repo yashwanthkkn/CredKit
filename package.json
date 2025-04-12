@@ -4,7 +4,7 @@
   "bin": {
     "credkit": "./index.js"
   },
-  "description":"A CLI tool that helps teams securely manage and generate tokens for multiple applications",
+  "description": "A CLI tool that helps teams securely manage and generate tokens for multiple applications",
   "type": "module",
   "dependencies": {
     "@azure/arm-keyvault": "^3.2.0",
