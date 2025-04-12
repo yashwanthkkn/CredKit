@@ -30,13 +30,15 @@ export default async function addCommand() {
     const { displayName } = await inquirer.prompt({
         type: 'input',
         name: 'displayName',
-        message: 'What would you like to call the name of token generation scope? (e.g. myapp-dev-token)'
+        message: 'What would you like to call the name of token generation scope? * (e.g. myapp-dev-token)',
+        validate: input => input.trim() !== '' || 'This field is required.'
     });
 
     const { clientId } = await inquirer.prompt({
         type: 'input',
         name: 'clientId',
-        message: "What's the client ID?"
+        message: "What's the client ID? *",
+        validate: input => input.trim() !== '' || 'This field is required.'
     });
 
     const subs = await listSubscriptions();
@@ -66,7 +68,8 @@ export default async function addCommand() {
     const { resourceId } = await inquirer.prompt({
         type: 'input',
         name: 'resourceId',
-        message: "What's the resource ID?"
+        message: "What's the resource ID? ",
+        validate: input => input.trim() !== '' || 'This field is required.'
     });
 
     const newEntry = {

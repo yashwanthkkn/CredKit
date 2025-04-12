@@ -55,11 +55,18 @@ export async function listSecretsFromVault(keyVaultUrl) {
 
     const secretNames = [];
 
-    for await (const secret of client.listPropertiesOfSecrets()) {
-        secretNames.push({ name: secret.name, id: secret.name });
+    try{
+        for await (const secret of client.listPropertiesOfSecrets()) {
+            secretNames.push({ name: secret.name, id: secret.name });
+        }
+    
+        return secretNames;
+    }catch (err) {
+        if(err.code === 'Forbidden') {
+            console.error("⚠️ Access denied to the Key Vault. Please check your permissions.");
+            process.exit(1);
+        }
     }
-
-    return secretNames;
 }
 
 export async function getTenantId() {
