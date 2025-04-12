@@ -4,6 +4,7 @@ import os from 'os';
 import inquirer from 'inquirer';
 import { getSecretFromKeyVault } from '../utils/keyvault.js';
 import { getTokenFromClientCredentials } from '../utils/token.js';
+import ora from 'ora';
 
 const CONFIG_PATH = path.join(os.homedir(), '.credkit', 'state.json');
 
@@ -36,6 +37,7 @@ export default async function tokenCommand() {
       'grant-type': grantType
     } = selection;
   
+    const spinner = ora(`🔐 Generating token...`).start();
     try {
       const clientSecret = await getSecretFromKeyVault(keyVaultName, secretName);
       const token = await getTokenFromClientCredentials({
@@ -45,9 +47,10 @@ export default async function tokenCommand() {
         grantType
       });
   
-      console.log(`\n🎟️  Token for ${selection['display-name']}:\n`);
+      spinner.succeed(`✅ Token generated for "${selection['display-name']}"`);
       console.log(token);
     } catch (err) {
-      console.error('❌ Failed to generate token:', err.message);
+      spinner.fail('❌ Failed to generate token');
+      console.error(err.message);
     }
   }

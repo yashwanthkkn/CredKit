@@ -5,8 +5,13 @@ import importCommand from "./src/commands/import-command.js"
 import tokenCommand from "./src/commands/token-command.js"
 import addCommand from './src/commands/add-command.js';
 import clearCommand from './src/commands/clear-command.js';
+import { ensureAzLogin } from './src/utils/keyvault.js';
+import { checkNodeVersion } from './src/utils/checkNodeVersion.js';
 
 const program = new Command();
+
+ensureAzLogin();
+checkNodeVersion('18.0.0');
 
 program
   .name('credkit')

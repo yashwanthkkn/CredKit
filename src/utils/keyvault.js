@@ -2,6 +2,8 @@ import { DefaultAzureCredential } from '@azure/identity';
 import { SecretClient } from '@azure/keyvault-secrets';
 import { KeyVaultManagementClient } from '@azure/arm-keyvault';
 import { SubscriptionClient } from '@azure/arm-subscriptions';
+import { execSync } from 'child_process';
+
 
 export async function getSecretFromKeyVault(vaultUrl, secretName) {
     const credential = new DefaultAzureCredential();
@@ -73,5 +75,16 @@ export async function getTenantId() {
     } else {
         console.error("⚠️ Error fetching tenant id:", err.message);
         return null;
+    }
+}
+
+export function ensureAzLogin() {
+    try {
+        const result = execSync('az account show', { stdio: 'pipe' }).toString();
+        const parsed = JSON.parse(result);
+        return !!parsed.user?.name;
+    } catch (e) {
+        console.error("⚠️ Please login to Azure CLI using `az login` before running this command.");
+        process.exit(1);
     }
 }

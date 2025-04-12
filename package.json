@@ -13,7 +13,8 @@
     "@azure/keyvault-secrets": "^4.9.0",
     "axios": "^1.8.4",
     "commander": "^13.1.0",
-    "inquirer": "^12.5.2"
+    "inquirer": "^12.5.2",
+    "ora": "^8.2.0"
   },
   "author": "Yashwanth K",
   "license": "ISC"
