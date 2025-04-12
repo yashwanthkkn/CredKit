@@ -1,0 +1,20 @@
+{
+  "name": "credkit",
+  "version": "1.0.0",
+  "bin": {
+    "credkit": "./index.js"
+  },
+  "description":"A CLI tool that helps teams securely manage and generate tokens for multiple applications",
+  "type": "module",
+  "dependencies": {
+    "@azure/arm-keyvault": "^3.2.0",
+    "@azure/arm-subscriptions": "^5.1.0",
+    "@azure/identity": "^4.8.0",
+    "@azure/keyvault-secrets": "^4.9.0",
+    "axios": "^1.8.4",
+    "commander": "^13.1.0",
+    "inquirer": "^12.5.2"
+  },
+  "author": "Yashwanth K",
+  "license": "ISC"
+}

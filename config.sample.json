@@ -1,0 +1,10 @@
+[
+    {
+      "keyvault-name": "https://my-keyvault.vault.azure.net",
+      "client-id": "my-client-id",
+      "keyvault-client-secret-name": "keyvault-secret-name",
+      "grant-type": "client_credentials",
+      "resource-id": "api://my-resource-id",
+      "display-name": "myapp-dev-token"
+    }
+]
