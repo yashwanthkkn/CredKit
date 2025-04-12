@@ -16,6 +16,10 @@
     "inquirer": "^12.5.2",
     "ora": "^8.2.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yashwanthkkn/CredKit.git"
+  },
   "author": "Yashwanth K",
   "license": "ISC"
 }
